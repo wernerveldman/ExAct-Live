@@ -1,0 +1,87 @@
+body{
+  background: rgba(44, 62, 80,1.0);
+  overflow:hidden;
+}
+.jumbotron {
+  background: #fff url(./logo-exact-v2.01-300x32.png) no-repeat 10px center;
+  height: 60px;
+  width: 100%;
+  z-index: 100 !important;
+}
+
+@keyframes slide_in_out {
+    0% {left : 100%;}
+    25% {left : 0;}
+    60% {left : 0;}
+    100% {left:-200%;}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.post{
+  top: 50px;
+  background: rgba(255, 255, 255, 1.0);
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+}
+
+.slide{
+  animation-name: slide_in_out;
+  animation-duration: 6s;
+  animation-fill-mode:forwards;
+  animation-iteration-count: 1;
+}
+
+.txtmsg{
+  font-size: 24px;
+  width: 80%;
+  padding: 20px;
+  padding-bottom: 55px;
+  min-height: 25px;
+  margin-top: 200px;
+}
+
+.post .caption{
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.txtmsg .caption{
+  background: rgba(52, 152, 219,0.9);
+}
+
+.txtmsg .caption .fbcredit{
+color: rgba(255, 255, 255, 1.0);  
+}
+
+
+.post .caption p{
+  margin: 3px;
+}
+
+.post .caption .fbcredit{
+  background: url(if_Untitled-16_107058.png) no-repeat left;
+  padding: 15px 10px 10px 30px;
+  margin: 3px;
+  font-size: 12px;
+  
+}
+
+.post .caption .fbcredit .likes{
+  background: url(if_Like_984762.png) no-repeat left;
+  padding: 3px 3px 3px 30px;
+  margin-left: 20px;
+}
+
+
+
+

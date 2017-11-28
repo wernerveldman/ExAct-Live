@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="simple-grid.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery-3.2.1.min.js"></script>  
+  <title>ExAct Live</title>
+
+</head>
+<body>
+  <div class="jumbotron">
+    </div>
+
+<div class="container">
+<div class="row" id="posts">
+
+</div>
+ 
+</div>
+  
+</body>
+<script>
+  var slideIndex = 1;
+
+
+  
+$( "#posts" ).load( "database_call.php", function() { 
+  get_fbdata();
+  showSlides();
+});
+  
+function get_fbdata(){
+$.get( "parse_facebook.php", function( data ) {
+  console.log(data);
+  $( "#posts" ).load( "database_call.php", function() { 
+  console.log("nieuwe data uit database");
+});
+}); 
+  setTimeout(get_fbdata, 120000); // Change image every 2 seconds
+}
+  
+function showSlides(n) {
+  var i;
+  var slides = $( ".post" );
+  var max_height = (screen.height * 0.9) - 150;
+  
+ 
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+ 
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1} 
+  slides[slideIndex-1].style.display = "block"; 
+  
+  
+  var imageSrc = slides[slideIndex-1]
+                     .style
+                      .backgroundImage
+                       .replace(/url\((['"])?(.*?)\1\)/gi, '$2')
+                        .split(',')[0];
+
+    // I just broke it up on newlines for readability        
+
+    var image = new Image();
+    image.src = imageSrc;
+    
+    var verhouding = image.width / image.height;
+    if(!isNaN(verhouding)){
+    slides[slideIndex-1].style.height = max_height + "px";
+    slides[slideIndex-1].style.width = (max_height * verhouding) + "px";
+    }
+  setTimeout(showSlides, 5000); // Change image every 2 seconds
+}  
+
+    
+  </script>
+</html>
